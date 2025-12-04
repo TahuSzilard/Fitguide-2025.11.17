@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Order;
+use App\Models\Discount;
+
+
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'phone',
+        'dob',
+        'gender',
+        'profile_picture',
+        'role',
+        'total_points',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'dob' => 'date', // <-- hozzáadva!
+        'password' => 'hashed',
+    ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function discounts()
+    {
+        return $this->hasMany(Discount::class);
+    }
+    public function redeemedRewards()
+    {
+        return $this->hasMany(RedeemedReward::class);
+    }
+
+
+}

@@ -1,0 +1,593 @@
+/* === PROFILE PAGE LAYOUT === */
+.profile-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    padding: 70px 32px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* === SIDEBAR === */
+.profile-sidebar {
+    background: rgba(10, 25, 55, 0.55);
+    padding: 28px 22px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255,255,255,.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 12px;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-avatar i {
+    font-size: 34px;
+    color:#fff;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 26px;
+}
+.user-info h3 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+.member-text {
+    font-size: 14px;
+    color: #87a5ff;
+}
+
+/* Sidebar menu */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-menu a,
+.sidebar-menu button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #d6e2ff;
+    padding: 10px 14px;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: .18s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu button:hover {
+    background: rgba(90,115,255,.25);
+    transform: translateX(4px);
+}
+
+/* Actív menüpont */
+.sidebar-menu .active {
+    background: linear-gradient(135deg, #516bff, #3a4bdd);
+    color: #fff !important;
+}
+
+/* Logout külön */
+.menu-logout {
+    color: #ff8080 !important;
+}
+.menu-logout:hover {
+    background: rgba(255,0,0,.18);
+    color:#ffaaaa !important;
+}
+
+/* === MAIN CONTENT === */
+.profile-main {
+    background: rgba(10, 25, 55, 0.4);
+    padding: 34px 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.08);
+    backdrop-filter: blur(10px);
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #eef5ff;
+    margin-bottom: 26px;
+}
+
+/* Info Card */
+.info-card {
+    display: grid;
+    gap: 10px;
+    background: rgba(255,255,255,.03);
+    border-radius: 14px;
+    padding: 22px 20px;
+    font-size: 16px;
+    color: #e6eeff;
+    margin-bottom: 30px;
+}
+
+.info-card strong {
+    color: #aecdff;
+}
+
+.btn-primary {
+    display:inline-block;
+    width: fit-content;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#607bff,#4658dd);
+    color:#fff;
+    font-weight:700;
+    transition: .22s;
+    text-decoration: none;
+}
+.btn-primary:hover {
+    transform:translateY(-2px);
+    background: linear-gradient(135deg,#6f87ff,#5566e7);
+}
+
+.mt { margin-top: 14px; }
+
+/* Delete Button */
+.btn-danger {
+    padding: 10px 18px;
+    background: rgba(255,0,0,.15);
+    color:#ff5555;
+    border-radius:12px;
+    border: none;
+    font-weight:700;
+    cursor:pointer;
+    transition: .22s;
+}
+.btn-danger:hover {
+    background: rgba(255,0,0,.28);
+    transform: translateX(4px);
+    color:#ff9090;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+        padding: 30px 14px;
+    }
+    .profile-sidebar {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+.member-admin {
+    color: #ff6b6b !important; /* piros */
+    font-weight: 700;
+}
+
+.member-user {
+    color: #6effa5 !important; /* zöld */
+    font-weight: 600;
+}
+/* ========== PROFILE OVERVIEW READ-ONLY INFO ========== */
+.profile-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 28px;
+    margin-bottom: 28px;
+}
+
+.overview-item {
+    background: rgba(255,255,255,0.05);
+    padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+}
+
+.overview-item label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9bb0ff;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.overview-item p {
+    font-size: 16px;
+    color: #eef3ff;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Ha üres az érték */
+.overview-item p:empty::after {
+    content: "—";
+    color: #7f8bbd;
+}
+
+/* Mobile responsive */
+@media (max-width: 700px) {
+    .profile-overview {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FORM GRID IN EDIT VIEW */
+.profile-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 28px;
+    margin-bottom: 28px;
+}
+
+/* Full width */
+.full {
+    grid-column: span 2;
+}
+
+/* Styled Input + Select */
+.profile-input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 12px;
+    color: #fff;
+    transition: .25s;
+}
+
+.profile-input:focus {
+    border-color: #6c88ff;
+    box-shadow: 0 0 10px rgba(90,115,255,.28);
+    outline: none;
+}
+
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-preview i {
+    font-size: 30px;
+    color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .profile-overview {
+        grid-template-columns: 1fr;
+    }
+}
+/* FILE INPUT — legyen ugyanolyan stílusú mint a többi mező */
+input[type="file"].profile-input {
+    padding: 12px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 12px;
+    color: #cdd7ff;
+    cursor: pointer;
+}
+
+input[type="file"].profile-input::-webkit-file-upload-button {
+    background: rgba(255,255,255,.12);
+    border: none;
+    color: #fff;
+    padding: 8px 14px;
+    margin-right: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+input[type="file"].profile-input:hover {
+    border-color: #6c88ff;
+}
+
+/* ==== SELECT DROPDOWN FIX ==== */
+.profile-input {
+    background: rgba(255,255,255,.05) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+/* A lenyíló lista háttere */
+.profile-input option {
+    background: #0f1b33; /* sötét háttér mint az oldal */
+    color: #fff;
+}
+
+/* Hoverelt opció */
+.profile-input option:hover {
+    background: #1d2a48;
+}
+
+/* Kijelölt opció */
+.profile-input option:checked,
+.profile-input option:focus {
+    background: #1d2a48 !important;
+    color: #fff !important;
+}
+
+.discount-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.discount-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.05);
+    color: #e7edff;
+    transition: .25s;
+}
+
+.discount-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.09);
+}
+
+.discount-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.discount-code {
+    font-size: 18px;
+    color: #7cb8ff;
+    font-weight: 900;
+    letter-spacing: .5px;
+}
+
+.amount {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.status {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.status.active { color: #6effa5; }
+.status.used { color: #ff7676; }
+.status.expired { color: #ffaa5e; }
+
+.discount-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.expiry {
+    font-size: 14px;
+    color: #cfd8ff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.copy-btn {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(135deg,#607bff,#3c4fd9);
+    color: #fff;
+    transition: .22s;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg,#6f87ff,#5566e7);
+}
+
+/* Állapot alapú háttér */
+.discount-card.used {
+    background: rgba(255, 77, 77, .1);
+    border-color: rgba(255, 77, 77, .2);
+}
+
+.discount-card.expired {
+    background: rgba(255, 172, 75, .1);
+    border-color: rgba(255, 172, 75, .2);
+}
+.expiry-label {
+    display: block;
+    font-size: 13px;
+    color: #8fa9c8;
+    margin-bottom: 3px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+.profile-stats {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.08);
+    padding: 14px 22px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 120px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #c8d6ff;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.points-card {
+    background: #0a1c34;
+    color: #fff;
+    text-align: center;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+}
+
+.points-value {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.sub-title {
+    color: #cfe3ff;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.reward-store {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+}
+
+.reward-item {
+    background: #0d223d;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+.reward-item img {
+    width: 90px;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #4ac27b;
+    font-weight: bold;
+    margin: 6px 0;
+}
+
+.reward-history {
+    background: #0d223d;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.history-row {
+    display: flex;
+    justify-content: space-between;
+    color: #ddd;
+    border-bottom: 1px solid #1b3c61;
+    padding: 6px 0;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.order-card {
+    background: rgba(255,255,255,0.05);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: 0.25s;
+}
+
+.order-card:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.order-id {
+    font-weight: 700;
+    color: #fff;
+}
+
+.order-status {
+    font-size: 14px;
+    padding: 3px 10px;
+    border-radius: 8px;
+    text-transform: capitalize;
+}
+
+.order-status.status-pending { background: #f4c542; color: #222; }
+.order-status.status-completed { background: #35c76a; color: #111; }
+.order-status.status-cancelled { background: #e65252; color: #fff; }
+
+.view-btn {
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #4db2ff;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+.view-btn:hover {
+    color: #76c9ff;
+}
+.security-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 350px;
+}
+
+.security-form input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+}
+
+.alert.success {
+    background: #38c172;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
